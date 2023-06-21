@@ -1,0 +1,21 @@
+name: illuminare
+description: Illuminare is a logging tool to get a deeper understanding of your code
+version: 0.0.1
+homepage: "https://infobits.dk"
+repository: https://github.com/infobits-code/illuminare
+
+environment:
+  sdk: '>=2.18.1 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  stack_trace: ^1.11.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+
+flutter:
