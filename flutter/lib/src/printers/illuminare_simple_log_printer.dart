@@ -33,8 +33,9 @@ class IlluminareSimpleLogPrinter extends IlluminareLogPrinter {
 
   @override
   List<String> log(IlluminareLogEvent logEvent) {
-    var errorStr =
-        logEvent.exception != "" ? '  ERROR: ${logEvent.exception}' : '';
+    var errorStr = logEvent.exception != null && logEvent.exception != ""
+        ? '  ERROR: ${logEvent.exception}'
+        : '';
     var timeStr = printTime ? 'TIME: ${DateTime.now().toIso8601String()}' : '';
     return [
       '${_labelFor(logEvent.level)} $timeStr ${logEvent.message}$errorStr'

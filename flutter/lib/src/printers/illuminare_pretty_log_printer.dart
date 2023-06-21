@@ -237,22 +237,22 @@ class IlluminarePrettyLogPrinter extends IlluminareLogPrinter {
   }
 
   String getTime() {
-    String _threeDigits(int n) {
+    String threeDigits(int n) {
       if (n >= 100) return '$n';
       if (n >= 10) return '0$n';
       return '00$n';
     }
 
-    String _twoDigits(int n) {
+    String twoDigits(int n) {
       if (n >= 10) return '$n';
       return '0$n';
     }
 
     var now = DateTime.now();
-    var h = _twoDigits(now.hour);
-    var min = _twoDigits(now.minute);
-    var sec = _twoDigits(now.second);
-    var ms = _threeDigits(now.millisecond);
+    var h = twoDigits(now.hour);
+    var min = twoDigits(now.minute);
+    var sec = twoDigits(now.second);
+    var ms = threeDigits(now.millisecond);
     var timeSinceStart = now.difference(_startTime!).toString();
     return '$h:$min:$sec.$ms (+$timeSinceStart)';
   }

@@ -33,5 +33,5 @@ class IlluminareErrorWidget extends LeafRenderObjectWidget {
 
   @override
   RenderBox createRenderObject(BuildContext context) =>
-      IlluminareRenderErrorBox(message);
+      IlluminareRenderErrorBox(message, _flutterError);
 }

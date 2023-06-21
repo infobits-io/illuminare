@@ -32,14 +32,14 @@ class MyApp extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () => IlluminareLogger.verbose("Test verbose"),
+                    onPressed: () => Illuminare.verbose("Test verbose"),
                     child: const Text("Test verbose log"),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () => IlluminareLogger.debug("Test debug"),
+                    onPressed: () => Illuminare.debug("Test debug"),
                     child: const Text("Test debug log"),
                   ),
                 ),
@@ -53,28 +53,28 @@ class MyApp extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () => IlluminareLogger.info("Test info"),
+                    onPressed: () => Illuminare.info("Test info"),
                     child: const Text("Test info log"),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () => IlluminareLogger.warn("Test warning"),
+                    onPressed: () => Illuminare.warn("Test warning"),
                     child: const Text("Test warn log"),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () => IlluminareLogger.error("Test error"),
+                    onPressed: () => Illuminare.error("Test error"),
                     child: const Text("Test error log"),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () => IlluminareLogger.fatal("Test fatal"),
+                    onPressed: () => Illuminare.fatal("Test fatal"),
                     child: const Text("Test fatal log"),
                   ),
                 ),
@@ -102,26 +102,26 @@ class MyApp extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () =>
-                        IlluminareLogger.info(["item 1", "item 2", "item 3"]),
+                        Illuminare.info(["item 1", "item 2", "item 3"]),
                     child: const Text("Test log list"),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () => IlluminareLogger.info(Text("Text")),
+                    onPressed: () => Illuminare.info(const Text("Text")),
                     child: const Text("Test log Text widget"),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () => IlluminareLogger.info(Container(
+                    onPressed: () => Illuminare.info(Container(
                       padding: const EdgeInsets.all(8.0),
                       margin: const EdgeInsets.all(8.0),
                       decoration: const BoxDecoration(color: Colors.amber),
                       child: ElevatedButton(
-                        onPressed: () => IlluminareLogger.debug("test"),
+                        onPressed: () => Illuminare.debug("test"),
                         child: const Text("Test log Container widget"),
                       ),
                     )),
@@ -131,8 +131,7 @@ class MyApp extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
-                    onPressed: () =>
-                        IlluminareLogger.info(() => "function output"),
+                    onPressed: () => Illuminare.info(() => "function output"),
                     child: const Text("Test log function"),
                   ),
                 ),

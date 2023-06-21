@@ -1,3 +1,4 @@
+/// Simple class to store a stack trace
 class IlluminareTrace {
   String file;
   String? className;

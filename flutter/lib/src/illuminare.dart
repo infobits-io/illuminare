@@ -15,7 +15,10 @@ import 'utils.dart';
 
 /// The main class for handling logs in Illuminare.
 ///
-/// Use [IlluminareLogger] to log things
+/// It has to be initialized to start working but when it has been initialized
+/// it will catch errors and crashes.
+///
+/// You can also use the static methods to log something manually.
 class Illuminare {
   static Illuminare? _instance;
 
@@ -26,6 +29,48 @@ class Illuminare {
     }
 
     return _instance!;
+  }
+
+  /// Log at verbose level
+  ///
+  /// [message] A descriptive message
+  static void verbose(dynamic message) {
+    Illuminare.instance.recordLog(IlluminareLogLevel.verbose, message);
+  }
+
+  /// Log at debug level
+  ///
+  /// [message] A descriptive message
+  static void debug(dynamic message) {
+    Illuminare.instance.recordLog(IlluminareLogLevel.debug, message);
+  }
+
+  /// Log at info level
+  ///
+  /// [message] A descriptive message
+  static void info(dynamic message) {
+    Illuminare.instance.recordLog(IlluminareLogLevel.info, message);
+  }
+
+  /// Log at warn level
+  ///
+  /// [message] A descriptive message
+  static void warn(dynamic message) {
+    Illuminare.instance.recordLog(IlluminareLogLevel.warning, message);
+  }
+
+  /// Log at error level
+  ///
+  /// [message] A descriptive message
+  static void error(dynamic message) {
+    Illuminare.instance.recordLog(IlluminareLogLevel.error, message);
+  }
+
+  /// Log at fatal level
+  ///
+  /// [message] A descriptive message
+  static void fatal(dynamic message) {
+    Illuminare.instance.recordLog(IlluminareLogLevel.fatal, message);
   }
 
   /// Initialize Illuminare
@@ -103,6 +148,7 @@ class Illuminare {
   ///
   /// TODO: Actually crash the app
   void crash() {
+    // ignore: avoid_print
     print("Crashing app");
   }
 
@@ -124,6 +170,7 @@ class Illuminare {
   ///
   /// TODO: Actually delete the unsent logs
   Future<void> deleteUnsentLogs() async {
+    // ignore: avoid_print
     print("deleteUnsentLogs");
   }
 
@@ -131,6 +178,7 @@ class Illuminare {
   ///
   /// TODO: Actually send the unsent logs
   Future<void> sendUnsentLogs() async {
+    // ignore: avoid_print
     print("sending unsent logs");
   }
 
@@ -190,7 +238,7 @@ class Illuminare {
       {dynamic reason,
       Iterable<DiagnosticsNode> information = const [],
       bool fatal = false}) {
-    final String _information = information.isEmpty
+    final String informationString = information.isEmpty
         ? ''
         : (StringBuffer()..writeAll(information, '\n')).toString();
 
@@ -218,7 +266,7 @@ class Illuminare {
       message,
       exception: exception,
       stackTrace: stackTraceElements,
-      information: _information,
+      information: informationString,
       printDetails: false,
     );
   }

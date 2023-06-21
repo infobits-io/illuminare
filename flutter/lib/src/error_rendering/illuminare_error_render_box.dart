@@ -31,7 +31,7 @@ class IlluminareRenderErrorBox extends RenderBox {
   ///
   /// A message can optionally be provided. If a message is provided, an attempt
   /// will be made to render the message when the box paints.
-  IlluminareRenderErrorBox([this.message = '']) {
+  IlluminareRenderErrorBox([this.message = '', this.flutterError]) {
     try {
       if (message != '') {
         // This class is intentionally doing things using the low-level
@@ -58,6 +58,8 @@ class IlluminareRenderErrorBox extends RenderBox {
 
   /// The message to attempt to display at paint time.
   final String message;
+
+  final FlutterError? flutterError;
 
   late final ui.Paragraph? _paragraph;
 

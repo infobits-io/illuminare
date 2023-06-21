@@ -5,6 +5,11 @@ import 'error_rendering/illuminare_error_widget.dart';
 
 typedef ErrorWidgetBuilder = Widget Function(FlutterErrorDetails details);
 
+/// The options for Illuminare
+///
+/// Use the predefined options [IlluminareOptions.development]
+/// or [IlluminareOptions.production]
+/// or create your own
 class IlluminareOptions {
   final ErrorWidgetBuilder? widgetErrorBuilder;
   final IlluminareLogFilter filter;
@@ -18,6 +23,7 @@ class IlluminareOptions {
     this.output = const IlluminareConsoleLogOutput(),
   });
 
+  /// Used for development uses pretty printer for easy overview
   IlluminareOptions.development({
     this.widgetErrorBuilder,
     this.filter = const IlluminareDevelopmentLogFilter(),
@@ -25,10 +31,11 @@ class IlluminareOptions {
     this.output = const IlluminareConsoleLogOutput(),
   });
 
+  /// Used for production uses simple printer
   IlluminareOptions.production({
     this.widgetErrorBuilder,
     this.filter = const IlluminareProductionLogFilter(),
-    this.printer = const IlluminarePrettyLogPrinter(),
+    this.printer = const IlluminareSimpleLogPrinter(),
     this.output = const IlluminareConsoleLogOutput(),
   });
 
