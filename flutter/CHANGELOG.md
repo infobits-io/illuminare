@@ -1,10 +1,16 @@
 # Changelog
 
-## 0.0.1
+## 0.0.3
 
-First version of Illuminare with working logging
+Exported IlluminareEventLog
 
 ## 0.0.2
 
 Moved log methods to Illuminare class.
 Fixed minor warnings and did some cleanup
+
+## 0.0.1
+
+First version of Illuminare with working logging
+
+
