@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.5
+
+Added spacing to log location for pretty printer
+Added log large text button to example
+Added log class to example
+
 ## 0.0.4
 
 Updated pretty printer to show file and location in same line as message instead of stacktrace box

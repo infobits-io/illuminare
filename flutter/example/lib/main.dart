@@ -135,6 +135,32 @@ class MyApp extends StatelessWidget {
                     child: const Text("Test log function"),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () => Illuminare.info(TestClass()),
+                    child: const Text("Test log class object"),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () => Illuminare.info(TestClass),
+                    child: const Text("Test log class"),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text("More logging"),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () => Illuminare.info(
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"),
+                    child: const Text("Test log long string"),
+                  ),
+                ),
               ],
             ),
           ),
@@ -143,3 +169,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+class TestClass {}

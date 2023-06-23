@@ -126,22 +126,18 @@ class IlluminarePrettyLogPrinter extends IlluminareLogPrinter {
   }
 
   String formatMessage(dynamic message) {
-    final finalMessage = message is Function ? message() : message;
     var messageTitle = "";
-    if (message is Function) {
-      messageTitle += "Output of function: ";
-    }
-    messageTitle += finalMessage.runtimeType.toString();
+    messageTitle += message.runtimeType.toString();
 
-    if (finalMessage is Map || finalMessage is Iterable) {
+    if (message is Map || message is Iterable) {
       const encoder = JsonEncoder.withIndent('  ', toEncodableFallback);
-      var encodedString = encoder.convert(finalMessage);
+      final encodedString = encoder.convert(message);
       return "$messageTitle\n$encodedString";
-    } else if (finalMessage is Widget) {
-      var widgetString = formatWidget(finalMessage.toString());
+    } else if (message is Widget) {
+      final widgetString = formatWidget(message.toString());
       return "$messageTitle widget\n$widgetString";
     } else {
-      return finalMessage.toString();
+      return message.toString();
     }
   }
 
@@ -368,8 +364,14 @@ class IlluminarePrettyLogPrinter extends IlluminareLogPrinter {
       var line = messageLines[i];
       var prefix = i == 0 ? emoji : "".padLeft(emoji.length);
       var location = "";
-      if (showLogLocation && i == (messageLines.length / 2).floor()) {
-        location = getLogLocation() ?? "";
+      if (showLogLocation &&
+          error == null &&
+          i == (messageLines.length / 2).floor()) {
+        final stringLocation = getLogLocation();
+        final fullString = '$verticalLineAtLevel$prefix$line$stringLocation';
+        final int lengthDiff = lineLength - fullString.length;
+        final int spacerCount = lengthDiff > 5 ? lengthDiff : 6;
+        location = "${" " * spacerCount}$stringLocation";
       }
       buffer.add(color('$verticalLineAtLevel$prefix$line$location'));
     }
