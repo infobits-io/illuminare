@@ -161,6 +161,22 @@ class MyApp extends StatelessWidget {
                     child: const Text("Test log long string"),
                   ),
                 ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () => Illuminare.error("Log exception",
+                        exception: Exception("Test exception")),
+                    child: const Text("Test log exception"),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () => Illuminare.error("Log information",
+                        information: "Extra information"),
+                    child: const Text("Test log information"),
+                  ),
+                ),
               ],
             ),
           ),

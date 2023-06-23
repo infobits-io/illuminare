@@ -107,7 +107,9 @@ class IlluminarePrettyLogPrinter extends IlluminareLogPrinter {
       stackTraceStr = formatStackTrace(logEvent.stackTrace!, errorMethodCount);
     }
 
-    String? errString = logEvent.exception == "" ? null : logEvent.exception;
+    String? errString = logEvent.exception == null || logEvent.exception == ""
+        ? null
+        : logEvent.exception.toString();
 
     String? timeStr;
     if (printTime) {
@@ -115,6 +117,10 @@ class IlluminarePrettyLogPrinter extends IlluminareLogPrinter {
     }
 
     String messageString = formatMessage(logEvent.message);
+
+    if (logEvent.information != null) {
+      messageString += "\n\n${logEvent.information}";
+    }
 
     return _formatAndPrint(
       logEvent.level,

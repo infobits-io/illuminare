@@ -264,34 +264,37 @@ class Illuminare {
       stackTrace: stackTrace,
     );
 
-    if (options.filter.shouldLog(logEvent)) {
-      var output = options.printer.log(logEvent);
+    // Issues with log should NOT influence
+    // the main software behavior.
+    try {
+      if (options.filter.shouldLog(logEvent)) {
+        var output = options.printer.log(logEvent);
 
-      if (onLog != null) {
-        onLog!(logEvent);
-      }
+        if (onLog != null) {
+          onLog!(logEvent);
+        }
 
-      if (output.isNotEmpty) {
-        var outputEvent = IlluminareOutputLog(level, output);
-        // Issues with log output should NOT influence
-        // the main software behavior.
-        try {
+        if (output.isNotEmpty) {
+          var outputEvent = IlluminareOutputLog(level, output);
           options.output.output(outputEvent);
-        } catch (e, s) {
-          // ignore: avoid_print
-          print(e);
-          // ignore: avoid_print
-          print(s);
         }
       }
+    } catch (e, s) {
+      // ignore: avoid_print
+      print(e);
+      // ignore: avoid_print
+      print(s);
     }
   }
 
   /// Record an error and send it to the server
-  Future<void> recordError(dynamic exception, StackTrace? stack,
-      {dynamic reason,
-      Iterable<DiagnosticsNode> information = const [],
-      bool fatal = false}) {
+  Future<void> recordError(
+    dynamic exception,
+    StackTrace? stack, {
+    dynamic reason,
+    Iterable<DiagnosticsNode> information = const [],
+    bool fatal = false,
+  }) {
     final String informationString = information.isEmpty
         ? ''
         : (StringBuffer()..writeAll(information, '\n')).toString();
@@ -329,8 +332,10 @@ class Illuminare {
   /// This is used to catch exceptions in the app
   ///
   /// [FlutterErrorDetails] a object containing all information about the exception
-  Future<void> recordFlutterError(FlutterErrorDetails flutterErrorDetails,
-      {bool fatal = false}) {
+  Future<void> recordFlutterError(
+    FlutterErrorDetails flutterErrorDetails, {
+    bool fatal = false,
+  }) {
     return recordError(
       flutterErrorDetails.exceptionAsString(),
       flutterErrorDetails.stack,

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.0.7
+
+Fixed error with pretty printer
+Added extra information for pretty printer
+
 ## 0.0.6
 
 Added more options to log methods
