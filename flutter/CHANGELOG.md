@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.4
+
+Updated pretty printer to show file and location in same line as message instead of stacktrace box
+
 ## 0.0.3
 
 Exported IlluminareEventLog

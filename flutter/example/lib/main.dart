@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:illuminare/illuminare.dart';
 
 void main() async {
-  await Illuminare.initialize(options: IlluminareOptions.production());
+  await Illuminare.initialize();
   runApp(const MyApp());
 }
 

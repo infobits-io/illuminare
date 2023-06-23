@@ -69,9 +69,12 @@ class IlluminarePrettyLogPrinter extends IlluminareLogPrinter {
   /// (boxing can still be turned on for some levels by using something like excludeBox:{Level.error:false} )
   final bool noBoxingByDefault;
 
+  /// Whether to print log location to the right of the message
+  final bool showLogLocation;
+
   const IlluminarePrettyLogPrinter({
     this.stackTraceBeginIndex = 0,
-    this.methodCount = 1,
+    this.methodCount = 0,
     this.errorMethodCount = 8,
     this.lineLength = 80,
     this.colors = true,
@@ -79,6 +82,7 @@ class IlluminarePrettyLogPrinter extends IlluminareLogPrinter {
     this.printTime = false,
     this.excludeBox = const {},
     this.noBoxingByDefault = false,
+    this.showLogLocation = true,
   });
 
   @override
@@ -223,6 +227,20 @@ class IlluminarePrettyLogPrinter extends IlluminareLogPrinter {
     }
   }
 
+  String? getLogLocation() {
+    final stackTrace = getStackTraceElements(StackTrace.current);
+    for (var line in stackTrace) {
+      if (_discardDeviceStacktraceLine(line.file) ||
+          _discardWebStacktraceLine(line.file) ||
+          _discardBrowserStacktraceLine(line.file)) {
+        continue;
+      }
+
+      return "(${line.file}:${line.line}:${line.column})";
+    }
+    return null;
+  }
+
   bool _discardDeviceStacktraceLine(String file) {
     return file.startsWith('package:illuminare');
   }
@@ -349,7 +367,11 @@ class IlluminarePrettyLogPrinter extends IlluminareLogPrinter {
     for (var i = 0; i < messageLines.length; i++) {
       var line = messageLines[i];
       var prefix = i == 0 ? emoji : "".padLeft(emoji.length);
-      buffer.add(color('$verticalLineAtLevel$prefix$line'));
+      var location = "";
+      if (showLogLocation && i == (messageLines.length / 2).floor()) {
+        location = getLogLocation() ?? "";
+      }
+      buffer.add(color('$verticalLineAtLevel$prefix$line$location'));
     }
     if (includeBox) {
       buffer.add(color(borderBottom));
