@@ -34,43 +34,97 @@ class Illuminare {
   /// Log at verbose level
   ///
   /// [message] A descriptive message
-  static void verbose(dynamic message) {
-    Illuminare.instance.recordLog(IlluminareLogLevel.verbose, message);
+  static void verbose(
+    dynamic message, {
+    dynamic exception,
+    String? information,
+  }) {
+    Illuminare.instance.recordLog(
+      IlluminareLogLevel.verbose,
+      message,
+      exception: exception,
+      information: information,
+    );
   }
 
   /// Log at debug level
   ///
   /// [message] A descriptive message
-  static void debug(dynamic message) {
-    Illuminare.instance.recordLog(IlluminareLogLevel.debug, message);
+  static void debug(
+    dynamic message, {
+    dynamic exception,
+    String? information,
+  }) {
+    Illuminare.instance.recordLog(
+      IlluminareLogLevel.debug,
+      message,
+      exception: exception,
+      information: information,
+    );
   }
 
   /// Log at info level
   ///
   /// [message] A descriptive message
-  static void info(dynamic message) {
-    Illuminare.instance.recordLog(IlluminareLogLevel.info, message);
+  static void info(
+    dynamic message, {
+    dynamic exception,
+    String? information,
+  }) {
+    Illuminare.instance.recordLog(
+      IlluminareLogLevel.info,
+      message,
+      exception: exception,
+      information: information,
+    );
   }
 
   /// Log at warn level
   ///
   /// [message] A descriptive message
-  static void warn(dynamic message) {
-    Illuminare.instance.recordLog(IlluminareLogLevel.warning, message);
+  static void warn(
+    dynamic message, {
+    dynamic exception,
+    String? information,
+  }) {
+    Illuminare.instance.recordLog(
+      IlluminareLogLevel.warning,
+      message,
+      exception: exception,
+      information: information,
+    );
   }
 
   /// Log at error level
   ///
   /// [message] A descriptive message
-  static void error(dynamic message) {
-    Illuminare.instance.recordLog(IlluminareLogLevel.error, message);
+  static void error(
+    dynamic message, {
+    dynamic exception,
+    String? information,
+  }) {
+    Illuminare.instance.recordLog(
+      IlluminareLogLevel.error,
+      message,
+      exception: exception,
+      information: information,
+    );
   }
 
   /// Log at fatal level
   ///
   /// [message] A descriptive message
-  static void fatal(dynamic message) {
-    Illuminare.instance.recordLog(IlluminareLogLevel.fatal, message);
+  static void fatal(
+    dynamic message, {
+    dynamic exception,
+    String? information,
+  }) {
+    Illuminare.instance.recordLog(
+      IlluminareLogLevel.fatal,
+      message,
+      exception: exception,
+      information: information,
+    );
   }
 
   /// Initialize Illuminare

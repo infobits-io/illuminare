@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.6
+
+Added more options to log methods
+
 ## 0.0.5
 
 Added spacing to log location for pretty printer
