@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.8
+
+Removed pretty printer exception empty lines
+
 ## 0.0.7
 
 Fixed error with pretty printer

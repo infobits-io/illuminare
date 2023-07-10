@@ -118,7 +118,7 @@ class IlluminarePrettyLogPrinter extends IlluminareLogPrinter {
 
     String messageString = formatMessage(logEvent.message);
 
-    if (logEvent.information != null) {
+    if (logEvent.information != null && logEvent.information!.trim() != "") {
       messageString += "\n\n${logEvent.information}";
     }
 

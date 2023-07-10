@@ -13,6 +13,10 @@ class MyApp extends StatelessWidget {
     throw Exception("This is a test exception");
   }
 
+  void throwErrorNoMessage() {
+    throw Exception();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -83,6 +87,13 @@ class MyApp extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: throwError,
                     child: const Text("Test throw exception"),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: throwErrorNoMessage,
+                    child: const Text("Test throw exception no message"),
                   ),
                 ),
                 Padding(
