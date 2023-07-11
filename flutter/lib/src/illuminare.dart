@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart'
         PlatformDispatcher,
         kDebugMode;
 import 'package:flutter/widgets.dart';
+import 'package:grpc/grpc.dart';
 
 import 'illuminare_log_event.dart';
 import 'illuminare_log_output.dart';
@@ -316,6 +317,8 @@ class Illuminare {
       } else {
         message = reason.toString();
       }
+    } else if (exception is GrpcError && exception.message != null) {
+      message = exception.message!;
     }
 
     return recordLog(

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.9
+
+Added parsing of grpc exceptions
+
 ## 0.0.8
 
 Removed pretty printer exception empty lines
