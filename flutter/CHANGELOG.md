@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.10
+
+Fixed weird web logging problem in release
+
 ## 0.0.9
 
 Added parsing of grpc exceptions

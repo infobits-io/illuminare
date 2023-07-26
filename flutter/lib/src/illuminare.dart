@@ -257,12 +257,25 @@ class Illuminare {
     List<IlluminareTrace>? stackTrace,
     bool? printDetails,
   }) async {
+    dynamic exceptionFixed;
+    List<IlluminareTrace>? stackTraceFixed;
+    try {
+      exceptionFixed = exception;
+    } catch (e) {
+      // Fix weird web problem
+    }
+    try {
+      stackTraceFixed = stackTrace;
+    } catch (e) {
+      // Fix weird web problem
+    }
+
     final IlluminareLogEvent logEvent = IlluminareLogEvent(
       level: level,
       message: message,
-      exception: exception,
+      exception: exceptionFixed,
       information: information,
-      stackTrace: stackTrace,
+      stackTrace: stackTraceFixed,
     );
 
     // Issues with log should NOT influence

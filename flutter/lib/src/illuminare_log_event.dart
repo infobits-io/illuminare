@@ -15,8 +15,8 @@ class IlluminareLogEvent {
   IlluminareLogEvent({
     required this.level,
     required this.message,
-    required this.exception,
-    required this.information,
-    required this.stackTrace,
+    this.exception,
+    this.information,
+    this.stackTrace,
   });
 }

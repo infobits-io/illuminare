@@ -1,6 +1,6 @@
 name: illuminare
 description: Illuminare is a logging tool to get a deeper understanding of your code
-version: 0.0.9
+version: 0.0.10
 homepage: "https://infobits.dk"
 repository: https://github.com/infobits-code/illuminare
 
